@@ -1027,7 +1027,23 @@
     async function setupWebSocket(name, roomKey, isAdmin) {
       base646 = await uploadImage();
       USERIMG.src = base646;
-      ws = new WebSocket('ws://localhost:10000');
+      try {
+        const ws = new WebSocket(
+          (location.protocol === "https:" ? "wss://" : "ws://") + location.host
+        );
+      
+        ws.onopen = () => {
+          console.log("✅ Connected to WebSocket");
+          ws.send("Hello server!");
+        };
+      
+        ws.onmessage = (e) => console.log("Message from server:", e.data);
+        ws.onerror = (err) => console.error("❌ WebSocket Error:", err);
+      
+      } catch (err) {
+        console.error("❌ WebSocket connection failed:", err);
+      }
+
       ws.onopen = () => {
         ws.send(JSON.stringify({ type: isAdmin ? 'join' : 'request', ImgPro: base646,  name, roomKey }));
       };
