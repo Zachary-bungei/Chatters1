@@ -1,11 +1,20 @@
-import WebSocket, { WebSocketServer } from 'ws';
+// import WebSocket, { WebSocketServer } from 'ws';
 
-const PORT = 8080;
-const wss = new WebSocketServer({ port: PORT });
-// const WebSocket = require('ws');
+// const PORT = 8080;
+// const wss = new WebSocketServer({ port: PORT });
+// // const WebSocket = require('ws');
 
 // const PORT = process.env.PORT || 8080;
 // const wss = new WebSocket.Server({ port: PORT });
+
+const WebSocket = require('ws');
+const express = require('express');
+const http = require('http');
+
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+const PORT = process.env.PORT || 8080;
 
 
 let roomMembers = new Map();;
