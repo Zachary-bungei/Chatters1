@@ -1029,7 +1029,7 @@
     async function setupWebSocket(name, roomKey, isAdmin) {
       base646 = await uploadImage();
       USERIMG.src = base646;
-      ws = new WebSocket('ws://localhost:8080');
+      ws = new WebSocket('ws://localhost:10000');
       ws.onopen = () => {
         ws.send(JSON.stringify({ type: isAdmin ? 'join' : 'request', ImgPro: base646,  name, roomKey }));
       };
