@@ -1,12 +1,12 @@
 {
-    "name": "CryptoChat",
-    "short_name": "CryptoChat",
-    "description": "Real-time encrypted messaging platform",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#00ffcc",
-    "orientation": "portrait"
-  
+  "name": "cryptochat",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.16.0"
   }
-  
+}
