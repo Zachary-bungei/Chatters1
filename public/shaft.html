@@ -1033,15 +1033,15 @@
         );
       
         ws.onopen = () => {
-          console.log("✅ Connected to WebSocket");
-          ws.send("Hello server!");
+          // console.log("✅ Connected to WebSocket");
+          // ws.send("Hello server!");
         };
       
-        ws.onmessage = (e) => console.log("Message from server:", e.data);
-        ws.onerror = (err) => console.error("❌ WebSocket Error:", err);
+        // ws.onmessage = (e) => console.log("Message from server:", e.data);
+        // ws.onerror = (err) => console.error("❌ WebSocket Error:", err);
       
       } catch (err) {
-        console.error("❌ WebSocket connection failed:", err);
+        // console.error("❌ WebSocket connection failed:", err);
       }
 
       ws.onopen = () => {
