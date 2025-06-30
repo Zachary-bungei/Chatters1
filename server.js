@@ -1,11 +1,3 @@
-// import WebSocket, { WebSocketServer } from 'ws';
-
-// const PORT = 8080;
-// const wss = new WebSocketServer({ port: PORT });
-// // const WebSocket = require('ws');
-
-// const PORT = process.env.PORT || 8080;
-
 const WebSocket = require('ws');
 const express = require('express');
 const http = require('http');
@@ -13,20 +5,23 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 
+// ✅ Serve frontend files from "public" folder
+app.use(express.static('public'));
+
+// ✅ Create WebSocket server on same HTTP server
 const wss = new WebSocket.Server({ server });
-const PORT = process.env.PORT || 8080;
 
 
 let roomMembers = new Map();;
 let allMembersIn = {};
 let allAdminIn = {};
 
-let roomMembersImg = new Map(); // roomKey -> [ws clients]
-let roomAdmins = new Map();  // roomKey -> admin ws
+let roomMembersImg = new Map(); 
+let roomAdmins = new Map();  
 
-console.log(`WebSocket server is running on ws://localhost:${PORT}`);
 
 wss.on('connection', (ws) => {
+  console.log(`WebSocket server is running on ws://localhost:${PORT}`);
   let currentRoom = null;
   let userName = null;
 
