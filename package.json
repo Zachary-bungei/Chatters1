@@ -1,6 +1,5 @@
 {
     "name": "CryptoChat",
-    "type": "module",
     "short_name": "CryptoChat",
     "description": "Real-time encrypted messaging platform",
     "start_url": "/",
