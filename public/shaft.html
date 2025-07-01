@@ -1033,20 +1033,19 @@
         );
       
         ws.onopen = () => {
-          // console.log("✅ Connected to WebSocket");
-          // ws.send("Hello server!");
-        };
+        ws.send(JSON.stringify({ type: isAdmin ? 'join' : 'request', ImgPro: base646,  name, roomKey }));
+      };
       
         // ws.onmessage = (e) => console.log("Message from server:", e.data);
         // ws.onerror = (err) => console.error("❌ WebSocket Error:", err);
       
       } catch (err) {
-        // console.error("❌ WebSocket connection failed:", err);
+        console.error("❌ WebSocket connection failed:", err);
       }
 
-      ws.onopen = () => {
-        ws.send(JSON.stringify({ type: isAdmin ? 'join' : 'request', ImgPro: base646,  name, roomKey }));
-      };
+      // ws.onopen = () => {
+      //   ws.send(JSON.stringify({ type: isAdmin ? 'join' : 'request', ImgPro: base646,  name, roomKey }));
+      // };
 
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
