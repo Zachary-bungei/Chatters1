@@ -1028,13 +1028,13 @@
       base646 = await uploadImage();
       USERIMG.src = base646;
       try {
-        const ws = new WebSocket(
+        ws = new WebSocket(
           (location.protocol === "https:" ? "wss://" : "ws://") + location.host
         );
       
         ws.onopen = () => {
-        ws.send(JSON.stringify({ type: isAdmin ? 'join' : 'request', ImgPro: base646,  name, roomKey }));
-      };
+          ws.send(JSON.stringify({ type: isAdmin ? 'join' : 'request', ImgPro: base646,  name, roomKey }));
+        };
       
         // ws.onmessage = (e) => console.log("Message from server:", e.data);
         // ws.onerror = (err) => console.error("❌ WebSocket Error:", err);
